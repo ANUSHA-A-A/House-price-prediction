@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>House Price Predictor</title>
+    <style>
+        body { font-family: Arial; max-width: 500px; margin: auto; padding: 20px; }
+        .input-group { margin-bottom: 10px; }
+        label { display: block; }
+        input, select { width: 100%; padding: 8px; }
+        button { width: 100%; padding: 10px; background: blue; color: white; border: none; }
+    </style>
+</head>
+<body>
+    <h2>House Price Prediction</h2>
+    <form action="/predict" method="post">
+        <div class="input-group">
+            <label>Overall Quality (1-10)</label>
+            <input type="number" name="OverallQual" value="5">
+        </div>
+        <div class="input-group">
+            <label>Living Area (Sq Ft)</label>
+            <input type="number" name="GrLivArea" value="1500">
+        </div>
+        <div class="input-group">
+            <label>Zoning</label>
+            <select name="MSZoning">
+                <option value="RL">Residential Low Density</option>
+                <option value="RM">Residential Medium Density</option>
+                <option value="FV">Floating Village</option>
+            </select>
+        </div>
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction_text %}
+        <h3>{{ prediction_text }}</h3>
+    {% endif %}
+</body>
+</html>
